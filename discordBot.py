@@ -3,7 +3,7 @@
 import discord
 import time
 
-TOKEN = 'NDY0Nzk1Mzk5NjIyODg1Mzg2.DiEU3g.Sz6sawcjd0OPVOeNMvJhiRK_Gmo'
+TOKEN = 'TOKEN'
 
 client = discord.Client()
 
@@ -13,11 +13,11 @@ async def on_message(message):
         return
 
     if message.content.startswith('!bot'):
-        msg = 'All commands include: \n\n!sup - hits u with the sup bitch\n!time - hits you with the time\n!content - shows u what its really all about\n!fuck will hit deep\n!join on\n!leave'
+        msg = 'All commands include: \n\n!sup \n!time\n!content\n!fuck\n!join\n!leave'
         await client.send_message(message.channel, msg)
 
     if message.content.startswith('!sup'):
-        msg = 'Sup Bitch? {0.author.mention}'.format(message)
+        msg = 'Sup? {0.author.mention}'.format(message)
         await client.send_message(message.channel, msg)
 
     if message.content.startswith('!time'):
@@ -28,8 +28,8 @@ async def on_message(message):
         msg = 'CONTENNNNNNTTT {0.author.mention}'.format(message)
         await client.send_message(message.channel, msg)
 
-    if message.content.startswith('!fuck'):
-        msg = 'No, fuk u {0.author.mention} u suck'.format(message)
+    if message.content.startswith('!yeet'):
+        msg = 'YEEEEEEET {0.author.mention}'.format(message)
         await client.send_message(message.channel, msg)
 
     if message.content.startswith('!join'):
@@ -44,7 +44,6 @@ async def on_message(message):
             else:
                 return await x.disconnect()
 
-@client.event
 
 
 @client.event
