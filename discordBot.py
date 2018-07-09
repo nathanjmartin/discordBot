@@ -13,7 +13,7 @@ async def on_message(message):
         return
 
     if message.content.startswith('!bot'):
-        msg = 'All commands include: \n\n!sup \n!time\n!content\n!fuck\n!join\n!leave'
+        msg = 'All commands include: \n\n!sup \n!time\n!content\n!yeet\n!join\n!leave'
         await client.send_message(message.channel, msg)
 
     if message.content.startswith('!sup'):
@@ -33,16 +33,32 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
 
     if message.content.startswith('!join'):
-        chan = message.author.voice_channel
-        await client.join_voice_channel(chan)
+        await joinServer(message.author.voice_channel)
 
     if message.content.startswith('!leave'):
-        msg = "I'm not in a server!"
-        for x in client.voice_clients:
-            if(x.server is None):
-                return
-            else:
-                return await x.disconnect()
+        await leaveServer()
+            
+ #methods
+async def joinServer(server):
+    try:
+        errorMsg = 'You are not in a channel!'
+        if(server == None):
+            await client.send_message(message.channel, errorMsg)
+        await client.join_voice_channel(server)
+    except:
+        print('Something went wrong!')
+        
+        
+async def leaveServer():
+    msg = "I'm not in a server!"
+    for x in client.voice_clients:
+        if(x.server == None):
+            return msg
+        else:
+            return await x.disconnect()
+        
+async def playFile():
+    pass #have not finished yet
 
 
 
